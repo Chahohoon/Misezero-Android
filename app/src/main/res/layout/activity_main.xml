@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <FrameLayout
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <fragment
+            android:name="com.example.misezero_android.UI.Weather.Current_Scene"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            tools:layout="@layout/fragment_current__scene"/>
     </FrameLayout>
 
     <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu_fab_label="true"
         app:menu_fab_size="mini"
         app:menu_labels_showShadow="false"
         app:menu_labels_singleLine="false"
+        fab:menu_colorNormal="@color/grey"
+        fab:menu_colorPressed="@color/grey"
+        fab:menu_labels_colorNormal="@color/transparent"
         fab:menu_labels_ellipsize="end"
         fab:menu_labels_maxLines="-1"
         fab:menu_labels_position="left"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints">
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab1"
+            android:onClick="onClick"
+            style="@style/menuStyle"
+            android:src="@drawable/currentimg"
+            app:fab_label="현재위치" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab2"
+            android:onClick="onClick"
+            style="@style/menuStyle"
+            android:src="@drawable/listimg"
+            app:fab_label="관심지역" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab3"
+            android:onClick="onClick"
+            style="@style/menuStyle"
+            android:src="@drawable/mapimg"
+            app:fab_label="현재위치" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab4"
+            android:onClick="onClick"
+            style="@style/menuStyle"
+            android:src="@drawable/settingimg"
+            app:fab_label="설정보기" />
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

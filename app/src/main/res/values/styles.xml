@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="menuStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fab_size">mini</item>
+        <item name="fab_colorNormal">@color/White</item>
+        <item name="fab_colorPressed">@color/darkGrey</item>
+        <item name="fontFamily">@font/reco</item>
+    </style>
+
+</resources>
