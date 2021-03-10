@@ -1,5 +1,164 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name = "android:splitMotionEvents">false</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <!--    작성자: 유은영 [20.06.02 ~ ]-->
+    <!--    <item name=""></item>-->
+
+    <!--기능: 현재위치 > top Linear-->
+    <style name="currentTopLinear">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">40dp</item>
+    </style>
+
+    <!--기능: 현재위치 > 이미지-->
+    <style name="currentImg">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+    <!--    현재위치주소 보여주는 창-->
+    <style name="currentAddress">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">4.5</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textSize">@dimen/tablefont</item>
+        <item name="android:fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:gravity">left|center</item>
+    </style>
+    <!--    myweek > view-->
+    <style name="weekView">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.13</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.3</item>
+        <item name="background">@drawable/white_rouned</item>
+        <item name="android:layout_marginStart">3dp</item>
+        <item name="android:layout_marginTop">3dp</item>
+    </style>
+    <!--    myweek > 요일라벨-->
+    <style name="weekLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.13</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.045</item>
+        <item name="fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:gravity">center|bottom</item>
+    </style>
+    <!--기능: 테이블 > 날짜-->
+    <style name="dateInfo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.09</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:paddingStart">5dp</item>
+    </style>
+    <!--기능: My_week > 최고,최저 라벨-->
+    <style name="temLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.09</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:gravity">center|center_vertical</item>
+    </style>
+    <!--기능: 테이블> 날씨이미지-->
+    <style name="weekImg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.4</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <!--기능: 현재위치>주간>테이블>Linear-->
+    <style name="tableContents">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/white_rouned</item>
+        <item name="android:layout_margin">1dp</item>
+    </style>
+
+    <!--기능: 설정 > top Linear-->
+    <style name="settingTopLinear" >
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">top</item>
+        <item name="android:weightSum">10</item>
+        <item name="android:background">@color/grey</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">3dp</item>
+    </style>
+    <!--기능: 설정 > back버튼-->
+    <style name="backBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.15</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.08</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:background">@color/grey</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="android:fontFamily">@font/reco</item>
+        <item name="android:src">@drawable/back</item>
+
+    </style>
+    <!--기능: 설정 > 타이틀-->
+    <style name="settingTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.85</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.08</item>
+        <item name="android:background">@color/grey</item>
+        <item name="android:gravity">center_vertical|end</item>
+        <item name="android:paddingRight">50dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:textColor">@color/settingLabel</item>
+        <item name="android:fontFamily">@font/reco</item>
+    </style>
+
+    <!--텍스트 라벨 흰색: 주소,-->
+    <style name="textStandard">
+        <item name="android:fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:layout_gravity">left|center</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:padding">2dp</item>
+    </style>
 
     <style name="menuStyle">
         <item name="android:layout_width">wrap_content</item>
@@ -10,4 +169,211 @@
         <item name="fontFamily">@font/reco</item>
     </style>
 
+    <!--    정리-->
+    <!--전체 구조 Linear-->
+    <style name="totalLinear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/mainBG</item>
+        <item name="android:weightSum">10</item>
+    </style>
+
+    <!--   My_current: 테이블>타이틀-->
+    <style name="currentTableTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">0.4</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="paddingStart">10dp</item>
+        <item name="android:textSize">@dimen/tablefont</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textColor">@color/tableTextColor</item>
+    </style>
+    <!--   My_current: 테이블>정보 + My_today: 테이블>정보-->
+    <style name="tableLabel">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.11</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/tableTextColor</item>
+        <item name="singleLine">true</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+    <!--    My_current: 테이블>이미지-->
+    <style name="tableImage">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.3</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--    My_today: 테이블>타이틀-->
+    <style name="tableTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">0</item>
+        <item name="fontFamily">@font/reco</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="paddingStart">10dp</item>
+        <item name="android:textSize">@dimen/tablefont</item>
+        <item name="android:gravity">left|center</item>
+        <item name="android:textColor">@color/tableTextColor</item>
+    </style>
+
+    <!--기능: myquote_list_item > 작은사이즈 텍스트-->
+    <style name="listsmallText">
+        <item name="android:textSize">@dimen/tablefont</item>
+        <item name="android:textColor">@color/darkGrey</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/test</item>
+    </style>
+
+    <!--   ㅓㅏㅣㅓㅏㅓㅣㅏㅓㅏㅣㅓㅣㅏㅓ-->
+
+    <!--    테이블 row 속성-->
+    <style name="tableRowCommon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bottom_line</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <!--    단기 정보-->
+    <!--    현재위치 > 오늘 텍스트 속성-->
+    <style name="todaytime">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.103</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:layout_marginStart">2.7dp</item>
+        <item name="android:gravity">center</item>
+        <item name="singleLine">true</item>
+    </style>
+    <!--    my_today > 날씨 이미지-->
+    <style name="todayTableimg">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.103</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.18</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <!--    my_today > 날씨설명-->
+    <style name="todayTableWeather">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.09</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.13</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">18dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--    my_today > value-->
+    <style name="todayTableText">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.11</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.114</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:padding">5dp</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+
+    <!--    정리된거-->
+
+    <!--     My_today: 상단버튼 (오늘, 내일, 모레)-->
+    <style name="todaytext">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.14</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.07</item>
+        <item name="fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:gravity">center</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <!--    상단테이블-->
+    <!--    my_today > vertical title-->
+    <style name="tableVerticalTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.11</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="layout_constraintHeight_percent">0.115</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/White</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:gravity">center</item>
+        <item name="singleLine">false</item>
+    </style>
+
+    <!--   bottom(오늘,단기,중기) -->
+    <style name="bottomBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="layout_constraintWidth_default">percent</item>
+        <item name="layout_constraintWidth_percent">0.25</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="layout_constraintHeight_default">percent</item>
+        <item name="android:background">@drawable/btn_bg_line</item>
+        <item name="fontFamily">@font/reco</item>
+        <item name="android:textColor">@color/Black</item>
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">5dp</item>
+        <item name="autoSizeMaxTextSize">20dp</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:gravity">center|center_vertical</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

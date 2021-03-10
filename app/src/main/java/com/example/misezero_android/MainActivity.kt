@@ -14,9 +14,11 @@ import com.example.misezero_android.UI.Weather.Week_Scene
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
+    var coreInfo = MiseCoreClass()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        coreInfo.onInitialize()
     }
 
     private fun onRefreshFragment(scene: Any) {

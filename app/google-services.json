@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "557061973684",
+    "firebase_url": "https://misekorea-53260.firebaseio.com",
+    "project_id": "misekorea-53260",
+    "storage_bucket": "misekorea-53260.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557061973684:android:4162e8c6f596a2e88fd9e1",
+        "android_client_info": {
+          "package_name": "com.example.misezero_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557061973684-h845u6j9fl6ld1eifr1iu1472q7b2ob7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC37gIWuekTRW3slOI5Z6qq9M3xbOcv8VA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557061973684-h845u6j9fl6ld1eifr1iu1472q7b2ob7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "557061973684-efa74k9uh66udp36t0tvf2k337524ebu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Logbeats.MiseKorea"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557061973684:android:2f556c4a60b301f18fd9e1",
+        "android_client_info": {
+          "package_name": "com.logbeats.misekorea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557061973684-h845u6j9fl6ld1eifr1iu1472q7b2ob7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC37gIWuekTRW3slOI5Z6qq9M3xbOcv8VA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557061973684-h845u6j9fl6ld1eifr1iu1472q7b2ob7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "557061973684-efa74k9uh66udp36t0tvf2k337524ebu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Logbeats.MiseKorea"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

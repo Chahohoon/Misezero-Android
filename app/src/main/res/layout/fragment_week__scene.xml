@@ -1,14 +1,1345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UI.Weather.Week_Scene">
+    android:id="@+id/myWeekLinear"
+    style="@style/totalLinear"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/Blue"
+        android:id="@+id/weekbg_color"
+        android:orientation="vertical">
+    </LinearLayout>
 
-</FrameLayout>
+    <!--상단주소-->
+    <ImageView
+        android:id="@+id/week_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/addImgDes"
+        android:paddingTop="20dp"
+        android:src="@drawable/location"
+        app:layout_constraintEnd_toStartOf="@+id/weekAdd"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.1" />
+    <TextView
+        android:id="@+id/weekAdd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/reco"
+        android:gravity="bottom"
+        android:text="@string/testAdd"
+        android:textColor="@color/White"
+        android:autoSizeMaxTextSize="20dp"
+        android:autoSizeMinTextSize="5dp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/week_update"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintStart_toEndOf="@+id/week_update"
+        app:layout_constraintTop_toTopOf="@+id/week_update"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.7"
+        tools:ignore="UnusedAttribute" />
+
+    <!--    가운데-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/weekcontents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.77"
+        app:layout_constraintTop_toBottomOf="@+id/weekAdd">
+
+        <!--요일 라벨-->
+        <TextView
+            android:id="@+id/sunTitle"
+            style="@style/weekLabel"
+            android:text="@string/sun"
+            app:layout_constraintStart_toStartOf="@+id/view11"
+            app:layout_constraintEnd_toEndOf="@+id/view11"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/monTitle"
+            style="@style/weekLabel"
+            android:text="@string/mon"
+            app:layout_constraintTop_toTopOf="@+id/sunTitle"
+            app:layout_constraintStart_toStartOf="@+id/view12"
+            app:layout_constraintEnd_toEndOf="@+id/view12"/>
+        <TextView
+            android:id="@+id/tueTitle"
+            style="@style/weekLabel"
+            android:text="@string/tue"
+            app:layout_constraintTop_toTopOf="@+id/monTitle"
+            app:layout_constraintStart_toStartOf="@+id/view13"
+            app:layout_constraintEnd_toEndOf="@+id/view13"/>
+        <TextView
+            android:id="@+id/wedTitle"
+            style="@style/weekLabel"
+            android:text="@string/wed"
+            app:layout_constraintTop_toTopOf="@+id/tueTitle"
+            app:layout_constraintStart_toStartOf="@+id/view14"
+            app:layout_constraintEnd_toEndOf="@+id/view14"/>
+        <TextView
+            android:id="@+id/thuTitle"
+            style="@style/weekLabel"
+            android:text="@string/thu"
+            app:layout_constraintTop_toTopOf="@+id/wedTitle"
+            app:layout_constraintStart_toStartOf="@+id/view15"
+            app:layout_constraintEnd_toEndOf="@+id/view15"/>
+        <TextView
+            android:id="@+id/friTitle"
+            style="@style/weekLabel"
+            android:text="@string/fri"
+            app:layout_constraintTop_toTopOf="@+id/thuTitle"
+            app:layout_constraintStart_toStartOf="@+id/view16"
+            app:layout_constraintEnd_toEndOf="@+id/view16"/>
+        <TextView
+            android:id="@+id/satTitle"
+            style="@style/weekLabel"
+            android:text="@string/sat"
+            app:layout_constraintTop_toTopOf="@+id/friTitle"
+            app:layout_constraintStart_toStartOf="@+id/view17"
+            app:layout_constraintEnd_toEndOf="@+id/view17"/>
+
+        <!--1-1-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view11"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sunTitle">
+
+            <TextView
+                android:id="@+id/date00"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter00"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date00" />
+
+            <TextView
+                android:id="@+id/max00Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max00"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max00"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min00Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min00Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min00"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min00"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--1-2-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view12"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view11"
+            app:layout_constraintTop_toBottomOf="@+id/monTitle">
+            <!--1-2-->
+            <TextView
+                android:id="@+id/date01"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter01"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date01" />
+
+            <TextView
+                android:id="@+id/max01Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max01"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max01"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min01Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min01Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min01"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min01"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--1-3-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view13"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view12"
+            app:layout_constraintTop_toBottomOf="@+id/tueTitle">
+            <!--1-3-->
+            <TextView
+                android:id="@+id/date02"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter02"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date02" />
+
+            <TextView
+                android:id="@+id/max02Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max02"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max02"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min02Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min02Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min02"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min02"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--1-4-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view14"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view13"
+            app:layout_constraintTop_toBottomOf="@+id/wedTitle">
+
+            <TextView
+                android:id="@+id/date03"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter03"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date03" />
+
+            <TextView
+                android:id="@+id/max03Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max03"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max03"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min03Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min03Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min03"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min03"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--1-5-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view15"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view14"
+            app:layout_constraintTop_toBottomOf="@+id/thuTitle">
+
+            <TextView
+                android:id="@+id/date04"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter04"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date04" />
+
+            <TextView
+                android:id="@+id/max04Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max04"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max04"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min04Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min04Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min04"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min04"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--1-6-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view16"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view15"
+            app:layout_constraintTop_toBottomOf="@+id/friTitle">
+
+            <TextView
+                android:id="@+id/date05"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter05"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date05" />
+
+            <TextView
+                android:id="@+id/max05Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max05"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max05"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min05Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min05Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min05"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min05"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--1-7-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view17"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view16"
+            app:layout_constraintTop_toBottomOf="@+id/satTitle">
+
+            <TextView
+                android:id="@+id/date06"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter06"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date06" />
+
+            <TextView
+                android:id="@+id/max06Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max06"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max06"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min06Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min06Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min06"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min06"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--2-1-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view21"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view11">
+            <!--2-1-->
+            <TextView
+                android:id="@+id/date07"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter07"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date07" />
+
+            <TextView
+                android:id="@+id/max07Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max07"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max07"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min07Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min07Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min07"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min07"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--2-2-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view22"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view21"
+            app:layout_constraintTop_toBottomOf="@+id/view12">
+            <!--2-2-->
+            <TextView
+                android:id="@+id/date08"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter08"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date08" />
+
+            <TextView
+                android:id="@+id/max08Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max08"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max08"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min08Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min08Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min08"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min08"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--2-3-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view23"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view22"
+            app:layout_constraintTop_toBottomOf="@+id/view13">
+            <!--2-3-->
+            <TextView
+                android:id="@+id/date09"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weahter09"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date09" />
+
+            <TextView
+                android:id="@+id/max09Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max09"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/max09"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min09Label"
+                app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/min09Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min09"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="TooManyViews" />
+            <TextView
+                android:id="@+id/min09"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--2-4-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view24"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view23"
+            app:layout_constraintTop_toBottomOf="@+id/view14">
+
+            <TextView
+                android:id="@+id/date10"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather10"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date10" />
+
+            <TextView
+                android:id="@+id/max10Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max10"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max10"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min10Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min10Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min10"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min10"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--2-5-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view25"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view24"
+            app:layout_constraintTop_toBottomOf="@+id/view15">
+
+            <TextView
+                android:id="@+id/date11"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather11"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date11" />
+
+            <TextView
+                android:id="@+id/max11Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max11"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max11"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min11Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min11Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min11"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min11"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--2-6-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view26"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view25"
+            app:layout_constraintTop_toBottomOf="@+id/view16">
+            <!--2-6 12-->
+            <TextView
+                android:id="@+id/date12"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather12"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date12" />
+
+            <TextView
+                android:id="@+id/max12Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max12"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max12"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min12Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min12Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min12"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min12"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--2-7-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view27"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view26"
+            app:layout_constraintTop_toBottomOf="@+id/view17">
+            <!--2-7 13-->
+            <TextView
+                android:id="@+id/date13"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather13"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date13" />
+
+            <TextView
+                android:id="@+id/max13Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max13"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max13"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min13Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min13Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min13"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min13"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-1-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view31"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view21">
+            <!--3-1-->
+            <TextView
+                android:id="@+id/date14"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather14"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date14" />
+
+            <TextView
+                android:id="@+id/max14Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max14"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max14"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min14Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min14Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min14"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min14"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-2-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view32"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view31"
+            app:layout_constraintTop_toBottomOf="@+id/view22">
+
+            <TextView
+                android:id="@+id/date15"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather15"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date15" />
+
+            <TextView
+                android:id="@+id/max15Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max15"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max15"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min15Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min15Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min15"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min15"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-3-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view33"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view32"
+            app:layout_constraintTop_toBottomOf="@+id/view23">
+            <!--3-3-->
+            <TextView
+                android:id="@+id/date16"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather16"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date16" />
+
+            <TextView
+                android:id="@+id/max16Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max16"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max16"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min16Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min16Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min16"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min16"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-4-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view34"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view33"
+            app:layout_constraintTop_toBottomOf="@+id/view24">
+            <!--3-4-->
+            <TextView
+                android:id="@+id/date17"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather17"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date17" />
+
+            <TextView
+                android:id="@+id/max17Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max17"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max17"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min17Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min17Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min17"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min17"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-5-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view35"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view34"
+            app:layout_constraintTop_toBottomOf="@+id/view25">
+            <!--3-5-->
+            <TextView
+                android:id="@+id/date18"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather18"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date18" />
+
+            <TextView
+                android:id="@+id/max18Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max18"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max18"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min18Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min18Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min18"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min18"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-6-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view36"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view35"
+            app:layout_constraintTop_toBottomOf="@+id/view26">
+
+            <TextView
+                android:id="@+id/date19"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather19"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date19" />
+
+            <TextView
+                android:id="@+id/max19Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max19"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max19"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min19Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min19Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min19"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min19"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!--3-7-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/view37"
+            style="@style/weekView"
+            android:background="@drawable/white_rouned"
+            app:layout_constraintStart_toEndOf="@+id/view36"
+            app:layout_constraintTop_toBottomOf="@+id/view27">
+
+            <TextView
+                android:id="@+id/date20"
+                style="@style/dateInfo"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/weather20"
+                style="@style/weekImg"
+                android:contentDescription="@string/weatherImg"
+                android:src="@drawable/sunny"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date20"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <TextView
+                android:id="@+id/max20Label"
+                style="@style/temLabel"
+                android:text="@string/max"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/max20"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/max20"
+                style="@style/temLabel"
+                android:text="@string/test"
+                android:textColor="@color/Red"
+                app:layout_constraintBottom_toTopOf="@+id/min20Label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min20Label"
+                style="@style/temLabel"
+                android:text="@string/min"
+                android:textColor="@color/darkGrey"
+                app:layout_constraintBottom_toTopOf="@+id/min20"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/min20"
+                style="@style/temLabel"
+                android:layout_marginBottom="8dp"
+                android:text="@string/test"
+                android:textColor="@color/Blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--    하단-->
+    <Button
+        android:id="@+id/currentBtn"
+        style="@style/bottomBtn"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="55dp"
+        android:text="@string/currentBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/todayBtn"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/weekcontents"
+        app:layout_constraintHorizontal_chainStyle="packed"/>
+    <Button
+        android:id="@+id/todayBtn"
+        style="@style/bottomBtn"
+        android:text="@string/shortBtn"
+        app:layout_constraintBottom_toBottomOf="@+id/currentBtn"
+        app:layout_constraintEnd_toStartOf="@+id/weekBtn"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/currentBtn"
+        app:layout_constraintTop_toTopOf="@+id/currentBtn" />
+
+    <Button
+        android:id="@+id/weekBtn"
+        style="@style/bottomBtn"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/btn_bg_clicked"
+        android:text="@string/weekBtn"
+        app:layout_constraintBottom_toBottomOf="@+id/todayBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/todayBtn"
+        app:layout_constraintTop_toTopOf="@+id/todayBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

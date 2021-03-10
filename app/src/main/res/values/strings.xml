@@ -1,5 +1,156 @@
-<resources>
-    <string name="app_name">Misezero-Android</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">미세영</string>
+    <string name="title_my">현재위치</string>
+    <string name="title_list">관심지역</string>
+    <string name="title_map">지도보기</string>
+    <string name="title_setting">설정보기</string>
+
+
+    <!--    작성자: 유은영
+            만든날짜: 20.05.29 ~
+            기능 및 설명: 앱안의 라벨 및 문구 저장 -->
+    <!--테스트주소-->
+    <string name="testAdd">경기도 수원시 영통구 광교1동</string>
+
+    <!--현재 위치 버튼 -->
+    <string name="tempLabel">기온:</string>
+    <string name="valueLabel">수치:</string>
+    <string name="rainLabel">습도:</string>
+    <string name="windLabel">풍속:</string>
+
+    <string name="currentBtn">현재</string>
+    <string name="shortBtn">단기</string>
+    <string name="weekBtn">중기</string>
+
+    <string name="todayBtn">오늘</string>
+    <string name="tomorrowBtn">내일</string>
+    <string name="theDayAfterBtn">모레</string>
+
+    <string name="setting_personal">개인</string>
+    <string name="setting_information">정보</string>
+
+    <!--오늘-->
+    <string name="time">시간</string>
+    <string name="weather">날씨</string>
+    <string name="temp">기온\n(℃)</string>
+    <string name="rainfall">강수\n(%)</string>
+    <string name="humid">습도\n(%)</string>
+    <string name="wind">풍속\n(m/s) </string>
+    <string name="zero">0am</string>
+    <string name="three">3am</string>
+    <string name="six">6am</string>
+    <string name="nine">9am</string>
+    <string name="twelve">12pm</string>
+    <string name="fifteen">3pm</string>
+    <string name="eighteen">6pm</string>
+    <string name="twentyOne">9pm</string>
+    <string name="shortterminfo">*3시간 단위의 예측정보입니다.</string>
+
+    <!--일주일-->
+    <string name="sun">일</string>
+    <string name="mon">월</string>
+    <string name="tue">화</string>
+    <string name="wed">수</string>
+    <string name="thu">목</string>
+    <string name="fri">금</string>
+    <string name="sat">토</string>
+    <string name="max">최고</string>
+    <string name="min">최저</string>
+
+
+    <!--대기질 라벨-->
+    <string name="fineDust">미세먼지</string>
+    <string name="microDust">초미세먼지</string>
+    <string name="ozone">오존</string>
+    <string name="carbon">일산화탄소</string>
+    <string name="nitrogen">이산화질소</string>
+    <string name="sulfurous">아황산가스</string>
+
+    <string name="good">좋음</string>
+
+    <!--관심지역-->
+    <string name="addBtn">관심지역 추가</string>
+
+    <!--지도보기-->
+    <string name="backBtn">돌아가기</string>
+    <string name="korea">대한민국</string>
+    <string name="mapInfo1"><b>측정소 핀을 클릭해 보세요!</b>\n(* 숫자는 측정소 수를 의미합니다)</string>
+
+    <!--설정보기-->
+    <string name="settingBtn">◀설정</string>
+    <string name="payTitle">광고삭제</string>
+    <string name="sendEmail">문의하기</string>
+    <string name="sourceTitle">오픈소스 정보</string>
+    <string name="helpTitle">도움말 보기</string>
+    <string name="versionTitle">버전정보</string>
+    <string name="versionInfo">Version: 1.0</string>
+
+    <!--    이미지 삽입 설명 (content description) -->
+    <string name="weatherImg">날씨 상태를 알려주는 이미지</string>
+    <string name="airImgDes">미세먼지 상태를 알려주는 이미지</string>
+    <string name="addImgDes"> 현재 위치를 알려주는 이미지</string>
+    <string name="mapImgs">우리나라 지도와 시도별 이미지</string>
+    <string name="humidImg">습도를 표시하는 아이콘</string>
+    <string name="tempImg">온도를 표시하는 아이콘</string>
+    <string name="reportImg">수치를 표시하는 아이콘</string>
+    <string name="windImg">풍속을 표시하는 아이콘</string>
+    <string name="backImg">뒤로가기를 표시하는 아이콘</string>
+
+    <!--    설정>결제하기-->
+    <string name="inapppremium">미세영 프리미엄</string>
+    <string name="inappText">준비중입니다</string>
+    <string name="pay1">결제하기 (1,000원/월)</string>
+    <string name="pay2">결제하기 (10,000원/년)</string>
+
+    <!--    설정>오픈소스-->
+    <string name="openText" tools:ignore="MissingTranslation,TypographyOther">
+        =================================
+        \n ALAMOFIRE: Copyright (c) 2014-2020 Alamofire Software Foundation
+        \n
+        \n ==============================
+        \n SwiftCSV:T he MIT License Copyright (c) 2014 Naoto Kaneko
+        \n
+        \n ==============================
+        \n Charts: Apache License 2.0 January 2004
+        \n
+        \n ==============================
+        \n NVActivityIndicatorView: MIT License Copyright (c) 2016 Vinh Nguyen
+        \n
+        \n ==============================
+        \n RevealingSplashView: MIT License
+        \n
+        \n ==============================
+        \n Floaty:MIT License
+        \n
+        \n ==============================
+        \n RealmSwift: Copyright 2014 Realm Inc.
+        \n
+        \n ==============================
+        \n SwiftyJSON:MIT License
+        \n
+        \n ==============================
+        \n Firebase:Apache License 2.0 January 2004
+        \n
+        \n ==============================
+        \n SwiftLocation:MIT License Copyright (c) 2019 Daniele Margutti
+        \n
+        \n ==============================
+        \n Alamofire-Synchronous:MIT License Copyright (c) 2015 Hran
+        \n
+        \n ==============================
+        \nFontFamily: RecipeKorea
+    </string>
+
+    <!--    설정>도움말-->
+    <string name="help1Title">[자료출처]</string>
+    <string name="help1"> 본 앱에 표시되는 실시간 대기정보는 한국환경공단 에어코리아에서 수신된 자료이며, 실제 수치와는 차이가 발생할 수도 있습니다.</string>
+    <string name="help2Title">[구간의미]</string>
+    <string name="help2"><b><u>좋음</u></b> \n대기오염 관련 질환군에서도 영향이 유발되지 않는 수준 \n<b><u>보통</u></b> \n환자군에게 만성 노출시 경미한 영향이 유발되는 수준 \n<b><u>나쁨</u></b> \n환자군/민감군(어린이, 노약자 등)에게 유해한 영향 유발, 일반인도 건강상 불쾌감을 경험할 수 있는 수준 \n<b><u>매우나쁨</u></b> \n환자군/민감군에게 급성 노출시 심각한 영향 유발, 일반인도 약한 영향이 유발되는 수준</string>
+    <string name="help3Title">[등급과 농도]</string>
+    <string name="help3"><b><u>미세먼지</u></b> \n좋음(~30), 보통(31~80), 나쁨(81~150), 매우나쁨(151~) \n<b><u>초미세먼지</u></b> \n좋음(~15), 보통(16~35), 나쁨(36~75), 매우나쁨(76~) \n<b><u>일산화탄소</u></b> \n좋음(~2), 보통(2.01~9), 나쁨(9.01~15), 매우나쁨(15.01~) \n<b><u>아황산가스</u></b> \n좋음(~0.02), 보통(2.01~9), 나쁨(9.01~15), 매우나쁨(15.01~) \n<b><u>오존</u></b> \n좋음(~0.03), 보통(0.031~0.09), 나쁨(0.091~0.15), 매우나쁨(0.151~)</string>
+
+    <string name="defaul">--</string>
+    <string name="test">aa</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

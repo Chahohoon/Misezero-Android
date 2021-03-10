@@ -1,14 +1,721 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UI.Weather.Current_Scene">
+    android:id="@+id/myCurrentLinear"
+    style="@style/totalLinear"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/Blue"
+        android:id="@+id/background_color"
+        android:orientation="vertical">
+    </LinearLayout>
 
-</FrameLayout>
+    <!--작성자: 유은영[20.06.02]
+      기능및설명: 정보를 제공해주는 위치의 주소를 표시-->
+    <!--주소-->
+    <ImageView
+        android:id="@+id/btn_update"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/addImgDes"
+        android:paddingTop="20dp"
+        android:src="@drawable/location"
+        app:layout_constraintEnd_toStartOf="@+id/currentText"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.1" />
+    <TextView
+        android:id="@+id/currentText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/reco"
+        android:gravity="bottom"
+        android:lines="1"
+        android:text="@string/testAdd"
+        android:textColor="@color/White"
+        android:autoSizeMaxTextSize="20dp"
+        android:autoSizeMinTextSize="5dp"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_update"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_update"
+        app:layout_constraintTop_toTopOf="@+id/btn_update"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.7"
+        tools:ignore="UnusedAttribute" />
+
+    <!--측정소의 주소를 표시-->
+    <ImageView
+        android:id="@+id/measureImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:contentDescription="@string/addImgDes"
+        android:padding="6dp"
+        android:src="@drawable/pin"
+        app:layout_constraintEnd_toStartOf="@+id/measureText"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_update"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.1" />
+    <TextView
+        android:id="@+id/measureText"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.7"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        android:autoSizeMaxTextSize="20dp"
+        android:autoSizeMinTextSize="5dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/reco"
+        android:gravity="start|center_vertical"
+        android:text="@string/testAdd"
+        android:textColor="@color/White"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/measureImg"
+        app:layout_constraintTop_toTopOf="@+id/measureImg"
+        app:layout_constraintBottom_toBottomOf="@+id/measureImg"
+        android:layout_marginEnd="20dp"
+        tools:ignore="UnusedAttribute" />
+    <!--2. 날씨와 대기질 요약-->
+    <!--3. 대기질 Table-->
+    <!--날씨-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/currentTable"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/measureText">
+
+        <ImageView
+            android:id="@+id/weatherImg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.5"
+            android:layout_marginStart="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/weatherImg"
+            android:src="@drawable/sunny"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.45"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:id="@+id/CurrentWeather"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/defaul"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherImg"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/tempImg"
+            android:padding="4dp"
+            android:src="@drawable/tempimg"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/CurrentWeather"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.08" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="@string/tempLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15" />
+        <TextView
+            android:id="@+id/CurrentTemp"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|center"
+            android:text="@string/defaul"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/humidImg"
+            android:padding="4dp"
+            android:src="@drawable/humidimg"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.08" />
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="@string/rainLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15" />
+        <TextView
+            android:id="@+id/currentHumid"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|center"
+            android:text="@string/defaul"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/textView2"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <!--미세먼지-->
+        <!--상태:좋음-->
+        <!--미세먼지 수치 표시-->
+
+        <ImageView
+            android:id="@+id/conditionImg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="8dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.45" />
+
+        <TextView
+            android:id="@+id/conditionGrade"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="@string/defaul"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintTop_toBottomOf="@+id/conditionImg"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/reportImg"
+            android:padding="4dp"
+            android:src="@drawable/reportimg"
+            app:layout_constraintEnd_toStartOf="@+id/textView4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/CurrentTemp"
+            app:layout_constraintTop_toBottomOf="@+id/conditionGrade"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.08" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="@string/valueLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintEnd_toStartOf="@+id/conditionValue"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15" />
+
+        <TextView
+            android:id="@+id/conditionValue"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|center"
+            android:text="@string/defaul"
+            app:layout_constraintBottom_toBottomOf="@+id/textView4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/textView4"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/windImg"
+            android:padding="4dp"
+            android:src="@drawable/windimg"
+            app:layout_constraintEnd_toStartOf="@+id/windText"
+            app:layout_constraintHeight_default="percent"
+
+            app:layout_constraintHeight_percent="0.1"
+
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/currentHumid"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.08" />
+
+        <TextView
+            android:id="@+id/windText"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="@string/windLabel"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/currentWid"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.15" />
+
+        <TextView
+            android:id="@+id/currentWid"
+            style="@style/textStandard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="start|center"
+            android:text="@string/defaul"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/windText"
+            app:layout_constraintTop_toTopOf="@+id/windText"
+            app:layout_constraintBottom_toBottomOf="@+id/windText"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/currentTable"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/white50_round"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/currentBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/pm10Title"
+            style="@style/tableLabel"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/reco"
+            android:text="@string/fineDust"
+            app:layout_constraintEnd_toStartOf="@+id/pm10Grade"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/pm10Grade"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/pm10Title"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pm10Title"
+            app:layout_constraintTop_toTopOf="@+id/pm10Title"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/pm10Value"
+            style="@style/tableLabel"
+            android:layout_gravity="start"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/pm10Grade"
+            app:layout_constraintEnd_toStartOf="@+id/fineImg"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pm10Grade"
+            app:layout_constraintTop_toTopOf="@+id/pm10Grade"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/fineImg"
+            style="@style/tableImage"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintBottom_toBottomOf="@+id/pm10Value"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pm10Value"
+            app:layout_constraintTop_toTopOf="@+id/pm10Value"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/pm25Title"
+            style="@style/tableLabel"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/reco"
+            android:text="@string/microDust"
+            app:layout_constraintEnd_toStartOf="@+id/pm25Grade"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pm10Title"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/pm25Grade"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/pm25Title"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pm25Title"
+            app:layout_constraintTop_toTopOf="@+id/pm25Title"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/pm25Value"
+            style="@style/tableLabel"
+            android:layout_gravity="start"
+            android:text="@string/test"
+            app:layout_constraintEnd_toStartOf="@+id/microImg"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pm25Grade"
+            app:layout_constraintTop_toTopOf="@+id/pm25Grade"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/microImg"
+            style="@style/tableImage"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/pm25Value"
+            app:layout_constraintTop_toTopOf="@+id/pm25Value"
+            app:layout_constraintBottom_toBottomOf="@+id/pm25Value"
+            app:layout_constraintWidth_percent="0.1" />
+
+        <TextView
+            android:id="@+id/ozoneTitle"
+            style="@style/tableLabel"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/reco"
+            android:text="@string/ozone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pm25Title"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/o3Grade"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/ozoneTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ozoneTitle"
+            app:layout_constraintTop_toTopOf="@+id/ozoneTitle"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/o3Value"
+            style="@style/tableLabel"
+            android:layout_gravity="start"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/o3Grade"
+            app:layout_constraintEnd_toStartOf="@+id/ozoneImg"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/o3Grade"
+            app:layout_constraintTop_toTopOf="@+id/o3Grade"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/ozoneImg"
+            style="@style/tableImage"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintBottom_toBottomOf="@+id/o3Value"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/o3Value"
+            app:layout_constraintTop_toTopOf="@+id/o3Value"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/coTitle"
+            style="@style/tableLabel"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/reco"
+            android:text="@string/carbon"
+            app:layout_constraintEnd_toStartOf="@+id/coGrade"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ozoneTitle"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/coGrade"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/coTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/coTitle"
+            app:layout_constraintTop_toTopOf="@+id/coTitle"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/coValue"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/coGrade"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/coGrade"
+            app:layout_constraintTop_toTopOf="@+id/coGrade"
+            app:layout_constraintEnd_toStartOf="@+id/carbonImg"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/carbonImg"
+            style="@style/tableImage"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintBottom_toBottomOf="@+id/coValue"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/coValue"
+            app:layout_constraintTop_toTopOf="@+id/coValue"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/no2Title"
+            style="@style/tableLabel"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/reco"
+            android:text="@string/nitrogen"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/coTitle"
+            app:layout_constraintEnd_toStartOf="@+id/no2Grade"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/no2Grade"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/no2Title"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/no2Title"
+            app:layout_constraintTop_toTopOf="@+id/no2Title"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/no2Value"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/no2Grade"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/no2Grade"
+            app:layout_constraintTop_toTopOf="@+id/no2Grade"
+            app:layout_constraintEnd_toStartOf="@+id/nitrogenImg"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/nitrogenImg"
+            style="@style/tableImage"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintBottom_toBottomOf="@+id/no2Value"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/no2Value"
+            app:layout_constraintTop_toTopOf="@+id/no2Value"
+            app:layout_constraintWidth_percent="0.1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/so2Title"
+            style="@style/tableLabel"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/reco"
+            android:text="@string/sulfurous"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/no2Title"
+            app:layout_constraintEnd_toStartOf="@+id/so2Grade"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+            android:id="@+id/so2Grade"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintBottom_toBottomOf="@+id/so2Title"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/so2Title"
+            app:layout_constraintTop_toTopOf="@+id/so2Title"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <TextView
+            android:id="@+id/so2Value"
+            style="@style/tableLabel"
+            android:text="@string/test"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="@+id/so2Grade"
+            app:layout_constraintBottom_toBottomOf="@+id/so2Grade"
+            app:layout_constraintStart_toEndOf="@+id/so2Grade"
+            app:layout_constraintEnd_toStartOf="@+id/sulfurousImg"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <ImageView
+            android:id="@+id/sulfurousImg"
+            style="@style/tableImage"
+            android:contentDescription="@string/airImgDes"
+            android:src="@drawable/good"
+            app:layout_constraintBottom_toBottomOf="@+id/so2Value"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/so2Value"
+            app:layout_constraintTop_toTopOf="@+id/so2Value"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--4. bottom Linear -->
+    <Button
+        android:id="@+id/currentBtn"
+        style="@style/bottomBtn"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="55dp"
+        android:background="@drawable/btn_bg_clicked"
+        android:text="@string/currentBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/todayBtn"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentTable"
+        tools:ignore="PxUsage" />
+
+    <Button
+        android:id="@+id/todayBtn"
+        style="@style/bottomBtn"
+        android:text="@string/shortBtn"
+        app:layout_constraintEnd_toStartOf="@+id/weekBtn"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/currentBtn"
+        app:layout_constraintTop_toTopOf="@+id/currentBtn" />
+
+    <Button
+        android:id="@+id/weekBtn"
+        style="@style/bottomBtn"
+        android:layout_marginEnd="24dp"
+        android:text="@string/weekBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/todayBtn"
+        app:layout_constraintTop_toTopOf="@+id/todayBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
