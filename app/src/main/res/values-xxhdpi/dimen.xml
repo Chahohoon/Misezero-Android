@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tabletext">15sp</dimen>
+    <dimen name="tablefont">15dp</dimen>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--    작성자: 유은영
+        만든날짜: 20.06.01
+        기능 및 설명: 현재위치 하단 버튼을 둥글게 꾸밈 -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="3dp"
+        android:left="-2dp"
+        android:right="-2dp"
+        android:top="-2dp">
+        <shape android:shape="rectangle">
+            <stroke
+                android:width="0.8dp"
+                android:color="@color/grey" />
+
+            <solid android:color="@color/transparent"/>
+        </shape>
+    </item>
+
+</layer-list>
+
+
+
