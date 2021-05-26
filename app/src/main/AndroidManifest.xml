@@ -32,7 +32,7 @@
         <!--        구글 맵 서비스 키 -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBbzTAoK35NuIX4133YEx5aOPXo4x_u5t8"/>
+            android:value="=="/>
 
         <activity android:name=".MainActivity">
             <intent-filter>
