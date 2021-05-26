@@ -7,14 +7,36 @@ import com.google.firebase.database.ValueEventListener
 
 @Suppress("DEPRECATION")
 class MiseCoreClass {
+
+    // 관심 지역 정보
+    var userInfoData = mutableListOf<MiseDataClass>()
+
     // 모든 측정소 정보
     var AirpStationInfo = mutableMapOf<String, MutableMap<String, MutableMap<String, String>>>()
 
-    fun onInitialize() {
+    // 현재 및 디스플레이 정보
+    var curInfoData = MiseDataClass()
+    var disPlayData : MiseDataClass? = null
 
-        getAirPolutionSatationInfo()
+    fun onInitialize() {
+        disPlayData = curInfoData
+//        getAirPolutionSatationInfo()
     }
 
+    ////////////////////////////////////////////////////
+    // 디스플레이 정보 설정
+    ////////////////////////////////////////////////////
+    fun setDispInfo(index : Int = -1){
+        if (index > -1){
+            //관심지역 클릭했을때
+            disPlayData = userInfoData[index]
+        }else{
+            //아니면
+            disPlayData = curInfoData
+        }
+    }
+
+    ///대기오염 측정소 데이터 모두 가져오는곳
     fun getAirPolutionSatationInfo() {
         FirebaseDatabase.getInstance().getReference("대기오염/실시간").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
