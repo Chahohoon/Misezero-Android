@@ -9,12 +9,14 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.misezero_android.UI.Map.Map_Scene
 import com.example.misezero_android.UI.QuoteList.QuoteList_Scene
 import com.example.misezero_android.UI.Setting.Help_Scene
 import com.example.misezero_android.UI.Setting.Home_Scene
 import com.example.misezero_android.UI.Weather.Current_Scene
+import com.example.misezero_android.UI.Weather.OnSwipeTouchListener
 import com.example.misezero_android.UI.Weather.Today_Scene
 import com.example.misezero_android.UI.Weather.Week_Scene
 import com.google.android.gms.location.*
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         //메인 클래스 시작
         coreInfo.onInitialize()
         setMainMenuSet()
+        createSwipeEvent()
         locationInit()
 //        onInitDataBase()
     }
@@ -59,13 +62,14 @@ class MainActivity : AppCompatActivity() {
 
 //        backGroundLayout.visibility = View.VISIBLE
         // 삭제
-//        this.isRunning = true
-//        handler = DisplayHandler()
-//        var thread = ThreadClass()
-//        thread.start()
+        this.isRunning = true
+        handler = DisplayHandler()
+        var thread = ThreadClass()
+        thread.start()
 
     }
 
+    //관심지역 데이터 저장할 용도
     fun onInitDataBase() {
         Realm.init(this)
         var config = RealmConfiguration.Builder().name("myrealm.realm").build()
@@ -90,34 +94,6 @@ class MainActivity : AppCompatActivity() {
                     Log.d("MiseLog22",i.toString())
                 }
             }
-        }
-    }
-    /////////////////////////////////////////////////////////////
-    //// 0.5초에 한번씩 확면을 갱신하여 준다.
-    //////////////////////////////////////////////////////////////
-    inner class ThreadClass : Thread(){
-        @RequiresApi(Build.VERSION_CODES.O)
-        override fun run() {
-            while (isRunning){
-                SystemClock.sleep(500)
-
-                // 데이터 업데이트 상태이면 화면을 갱신한다.
-                if (coreInfo.disPlayData!!.iscomplete){
-                    handler?.sendEmptyMessage(0)
-                }
-            }
-        }
-    }
-    /////////////////////////////////////////////////////////////
-    //// 화면 갱신 해들러
-    //////////////////////////////////////////////////////////////
-
-    inner class DisplayHandler : Handler(){
-        @RequiresApi(Build.VERSION_CODES.O)
-        override fun handleMessage(msg: Message) {
-            super.handleMessage(msg)
-//            backGroundLayout.visibility = View.GONE
-            isRunning = false
         }
     }
 
@@ -148,6 +124,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     //////////////////////////////////////////////////////////////////////////////////////
     // 위치 설정 리스너 등록
     //////////////////////////////////////////////////////////////////////////////////////
@@ -166,9 +143,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    //플로팅액션버튼 이벤트
     private fun setMainMenuSet() {
-
             fab1?.setOnClickListener {
                 onRefreshFragment(Current_Scene())
                 fam.close(true)}
@@ -186,11 +162,58 @@ class MainActivity : AppCompatActivity() {
             fab4?.setOnClickListener {
                 onRefreshFragment(Home_Scene())
                 fam.close(true)
-
         }
     }
 
-    ///권한 결과
+    //////////////////////////////////////////////////////////////////////////////////////
+    // 스와이프 이벤트 등록
+    //////////////////////////////////////////////////////////////////////////////////////
+    private fun createSwipeEvent(){
+        screen_view.setOnTouchListener(object : OnSwipeTouchListener(baseContext){
+
+            // 왼쪽.
+            override fun onSwipeLeft() {
+
+                // 현재 보여지는 프래그먼트를 확인하여 다음 실행을 구현.
+                for(fragment: Fragment in supportFragmentManager.fragments){
+                    if (fragment.isVisible) {
+                        when(fragment){
+                            is Current_Scene->{onRefreshFragment(Today_Scene())}
+                            is Today_Scene->{onRefreshFragment(Week_Scene())}
+                            is Week_Scene->{onRefreshFragment(Current_Scene())}
+                        }
+                    }
+                }
+            }
+
+            // 오른쪽.
+            override fun onSwipeRight() {
+
+                // 현재 보여지는 프래그먼트를 확인하여 다음 실행을 구현.
+                for(fragment: Fragment in supportFragmentManager.fragments){
+                    if (fragment.isVisible){
+                        when(fragment){
+                            is Current_Scene->{onRefreshFragment(Week_Scene())}
+                            is Today_Scene->{onRefreshFragment(Current_Scene())}
+                            is Week_Scene->{onRefreshFragment(Today_Scene())}
+                        }
+                    }
+                }
+            }
+
+            // 위.
+            override fun onSwipeTop() {
+                Toast.makeText(baseContext,"위로",Toast.LENGTH_SHORT).show()
+            }
+
+            // 아래.
+            override fun onSwipeBottom() {
+                Toast.makeText(baseContext,"아래로",Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    /// 퍼미션 권한 결과
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
@@ -209,15 +232,44 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
             it.addToBackStack(null)
             when (scene) {
-                is Current_Scene-> { it.replace(R.id.main_view,scene)}
-                is Today_Scene-> { it.replace(R.id.main_view,scene)}
-                is Week_Scene -> { it.replace(R.id.main_view,scene)}
+                is Current_Scene-> { it.replace(R.id.main_view,scene).commit()}
+                is Today_Scene-> { it.replace(R.id.main_view,scene).commit()}
+                is Week_Scene -> { it.replace(R.id.main_view,scene).commit()}
                 is QuoteList_Scene -> { it.replace(R.id.main_view,scene).commit() }
                 is Map_Scene -> { it.replace(R.id.main_view, scene).commit() }
-                is Home_Scene-> { it.replace(R.id.main_view,scene)}
-                is Help_Scene-> { it.replace(R.id.main_view,scene)}
+                is Home_Scene-> { it.replace(R.id.main_view,scene).commit()}
+                is Help_Scene-> { it.replace(R.id.main_view,scene).commit()}
                 else -> {}
             }
+        }
+    }
+
+    /////////////////////////////////////////////////////////////
+    //// 0.5초에 한번씩 확면을 갱신하여 준다.
+    //////////////////////////////////////////////////////////////
+    inner class ThreadClass : Thread(){
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun run() {
+            while (isRunning){
+                SystemClock.sleep(500)
+
+                // 데이터 업데이트 상태이면 화면을 갱신한다.
+                if (coreInfo.disPlayData!!.iscomplete){
+                    handler?.sendEmptyMessage(0)
+                }
+            }
+        }
+    }
+    /////////////////////////////////////////////////////////////
+    //// 화면 갱신 해들러
+    //////////////////////////////////////////////////////////////
+
+    inner class DisplayHandler : Handler(){
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+//            backGroundLayout.visibility = View.GONE
+            isRunning = false
         }
     }
 }

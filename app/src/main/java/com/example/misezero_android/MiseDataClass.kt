@@ -440,21 +440,11 @@ class MiseDataClass {
         }
 
         return when (res) {
-            "좋음" -> {
-                "Good"
-            }
-            "보통" -> {
-                "Average"
-            }
-            "나쁨" -> {
-                "Bad"
-            }
-            "매우나쁨" -> {
-                "Serious"
-            }
-            else -> {
-                res
-            }
+            "좋음" -> { "Good" }
+            "보통" -> { "Average" }
+            "나쁨" -> { "Bad" }
+            "매우나쁨" -> { "Serious" }
+            else -> { res }
         }
     }
 
@@ -736,7 +726,7 @@ class MiseDataClass {
         var umd = arrStr.last().replace(".", "_")
         return when(arrStr.count()){
             2 -> { "${arrStr[0]}-${arrStr[0]}-${umd}" }
-            4 -> { "${arrStr[0]}-${arrStr[1]} ${arrStr[2]}-${umd}"}
+            4 -> { "${arrStr[0]}-${arrStr[1]} ${arrStr[2]}-${umd}"} // ex) "경기도" "수원시" "영통구" "광교1동" -> "경기도" "수원시영통구" "광교1동"
             3 -> { "${arrStr[0]}-${arrStr[1]}-${umd}"}
             else ->{ null }
         }

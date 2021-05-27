@@ -1,60 +1,114 @@
 package com.example.misezero_android.UI.Weather
 
-import android.os.Bundle
+import android.content.Context
+import android.os.*
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import com.example.misezero_android.InfoItem
+import com.example.misezero_android.MainActivity
 import com.example.misezero_android.R
+import kotlinx.android.synthetic.main.fragment_current__scene.*
+import kotlinx.android.synthetic.main.fragment_current__scene.currentBtn
+import kotlinx.android.synthetic.main.fragment_current__scene.todayBtn
+import kotlinx.android.synthetic.main.fragment_current__scene.weekBtn
+import kotlinx.android.synthetic.main.fragment_today__scene.*
+import kotlinx.android.synthetic.main.fragment_current__scene.btn_update
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Today_Scene.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Today_Scene : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var mainActivity: MainActivity? = null
+    var handler: DisplayHandler? = null
+    var isRunning = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainActivity = activity as MainActivity
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_today__scene, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Today_Scene.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Today_Scene().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        currentBtn.setOnClickListener {
+            mainActivity?.onRefreshFragment(Current_Scene())
+        }
+        todayBtn.setOnClickListener {
+            mainActivity?.onRefreshFragment(Today_Scene())
+        }
+        weekBtn.setOnClickListener {
+            mainActivity?.onRefreshFragment(Week_Scene())
+        }
+    }
+
+    //화면이 표시되고 난 후
+    //초기화 작업
+    override fun onResume() {
+        super.onResume()
+
+        //버튼 이벤트 활성화
+        setListenerEnable(true)
+
+        isRunning = true
+        handler = DisplayHandler()
+
+        var thread = ThreadClass()
+        thread.start()
+
+        onRefreshScreen()
+    }
+
+    private fun setListenerEnable(value : Boolean){
+        currentBtn.isEnabled = value
+        todayBtn.isEnabled = value
+        weekBtn.isEnabled = value
+
+        afterdays0.isEnabled = value
+        afterdays1.isEnabled = value
+        afterdays2.isEnabled = value
+
+
+        if (!btn_update.hasOnClickListeners() && btn_update.isEnabled){
+            btn_update.setOnClickListener {
+                onRefreshScreen()
+            }
+        }
+    }
+
+    private fun onRefreshScreen(red : Int = 0) {
+        mainActivity?.coreInfo?.disPlayData?.let {
+            textView3.text = it.getInfo(InfoItem.행정동명)
+
+
+        }
+    }
+
+
+
+    inner class ThreadClass : Thread() {
+        override fun run() {
+            SystemClock.sleep(500)
+
+            mainActivity?.coreInfo?.disPlayData?.let {
+                if(it.isUpdate) {
+                    handler?.sendEmptyMessage(0)
+                    it.isUpdate = false
                 }
             }
+        }
+    }
+
+    inner class DisplayHandler : Handler() {
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            onRefreshScreen()
+        }
     }
 }

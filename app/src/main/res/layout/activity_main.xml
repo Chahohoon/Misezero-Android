@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/screen_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,7 +25,6 @@
         android:id="@+id/fam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu_fab_label="true"
         app:menu_fab_size="mini"
         app:menu_labels_showShadow="false"
         app:menu_labels_singleLine="false"
@@ -38,33 +38,47 @@
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab1"
-            android:onClick="onClick"
             style="@style/menuStyle"
             android:src="@drawable/currentimg"
             app:fab_label="현재위치" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab2"
-            android:onClick="onClick"
+
             style="@style/menuStyle"
             android:src="@drawable/listimg"
             app:fab_label="관심지역" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab3"
-            android:onClick="onClick"
             style="@style/menuStyle"
             android:src="@drawable/mapimg"
             app:fab_label="현재위치" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab4"
-            android:onClick="onClick"
             style="@style/menuStyle"
             android:src="@drawable/settingimg"
             app:fab_label="설정보기" />
 
     </com.github.clans.fab.FloatingActionMenu>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/backGroundLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="@color/black50"-->
+<!--        android:clickable="false"-->
+<!--        android:orientation="horizontal">-->
+<!---->
+<!--        <ProgressBar-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:clickable="false"-->
+<!--            android:minWidth="50dp"-->
+<!--            android:minHeight="50dp" />-->
+<!---->
+<!--    </LinearLayout>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

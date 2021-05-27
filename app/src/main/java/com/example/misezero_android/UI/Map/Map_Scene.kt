@@ -15,7 +15,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
-class Map_Scene : Fragment() {
+class Map_Scene : Fragment(), OnMapReadyCallback {
 
     private val callback = OnMapReadyCallback { googleMap ->
         /**
@@ -44,5 +44,9 @@ class Map_Scene : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
+    }
+
+    override fun onMapReady(p0: GoogleMap?) {
+        TODO("Not yet implemented")
     }
 }

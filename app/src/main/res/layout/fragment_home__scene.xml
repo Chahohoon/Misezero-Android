@@ -1,11 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.Setting.Home_Scene">
+    android:background="#CCCCCC">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!--작성자: 유은영
+        작성일자: 20.05.8
+        설명: 설정페이지 레이아웃작업-->
+    <LinearLayout
+        android:id="@+id/settingLinear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="55dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="0dp"
+            android:text="@string/setting_information"
+            android:textSize="13sp"
+            android:textColor="@color/Black" />
+        <!--"정보"관련 리스트 생성-->
+        <ListView
+            android:id="@+id/setList2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp"
+            android:paddingLeft="0px"
+            android:paddingRight="0px"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
