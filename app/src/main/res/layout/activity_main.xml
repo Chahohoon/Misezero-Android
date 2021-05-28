@@ -53,7 +53,7 @@
             android:id="@+id/fab3"
             style="@style/menuStyle"
             android:src="@drawable/mapimg"
-            app:fab_label="현재위치" />
+            app:fab_label="지도보기" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab4"
