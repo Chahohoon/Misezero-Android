@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/rounded"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bottom_line"
+        android:fontFamily="@font/reco"
+        android:gravity="start|center"
+        android:padding="5dp"
+        android:text="@string/testAdd"
+        android:textColor="@color/Blue"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.65" />
+
+    <TextView
+        android:id="@+id/cityAddress"
+        android:layout_marginStart="5dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="start|center"
+        android:padding="5dp"
+        android:text="@string/testAdd"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.35"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cityName"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.65"
+        tools:ignore="RtlHardcoded,UnusedAttribute" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/tempImg"
+        android:padding="3dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/tempimg"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toStartOf="@+id/cityAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.1" />
+    <TextView
+        android:id="@+id/cityTemp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.2"
+        android:layout_height="0dp"
+        android:gravity="center|start"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/humidImg"
+        android:padding="3dp"
+        android:src="@drawable/humidimg"
+        app:layout_constraintBottom_toBottomOf="@+id/cityTemp"
+        app:layout_constraintTop_toTopOf="@+id/cityTemp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintStart_toEndOf="@+id/cityTemp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.1" />
+
+    <TextView
+        android:id="@+id/cityHumid"
+        android:layout_width="0dp"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.2"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.25"
+        android:adjustViewBounds="true"
+        android:gravity="center|start"
+
+        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+        />
+
+    <ImageView
+        android:id="@+id/listWeatherImg"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.13"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.7"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/weatherImg"
+        android:src="@drawable/sunny"
+        app:layout_constraintBottom_toTopOf="@+id/weatherText"
+        app:layout_constraintEnd_toStartOf="@+id/listAirImg"
+        app:layout_constraintStart_toEndOf="@+id/cityName"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/weatherText"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.13"
+        android:layout_height="0dp"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listWeatherImg"
+        app:layout_constraintStart_toStartOf="@+id/listWeatherImg"
+        app:layout_constraintEnd_toEndOf="@+id/listWeatherImg"/>
+
+    <ImageView
+        android:id="@+id/listAirImg"
+        android:layout_marginEnd="5dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.13"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.7"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/airImgDes"
+        android:src="@drawable/bad"
+        app:layout_constraintBottom_toTopOf="@+id/pm10Text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/listWeatherImg"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <TextView
+        android:id="@+id/pm10Text"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.13"
+        android:layout_height="0dp"
+        android:textColor="@color/darkGrey"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@+id/listAirImg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/listAirImg"
+        app:layout_constraintStart_toStartOf="@+id/listAirImg"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

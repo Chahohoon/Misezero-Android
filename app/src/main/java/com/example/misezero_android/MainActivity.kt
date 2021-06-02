@@ -1,10 +1,10 @@
 package com.example.misezero_android
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.*
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     // 관심지역 데이터 베이스
     var realm : Realm? = null
-
+    var  REQUEST_CODE = 1
     // 권한 및 위치 설정
     private val permissionUitl = Permission_Uitl()
     private lateinit var locationRequest: LocationRequest
@@ -224,6 +224,15 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,"권한을 허용하지 않으시면 프로그램 사용이 제한됩니다.",Toast.LENGTH_LONG).show()
                 finish()
             }
+        }
+    }
+
+    //관심지역 검색 화면에서 돌아가기 눌렀을때 다시 관심지역 프래그먼트로
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == REQUEST_CODE) {
+            onRefreshFragment(QuoteList_Scene())
         }
     }
 

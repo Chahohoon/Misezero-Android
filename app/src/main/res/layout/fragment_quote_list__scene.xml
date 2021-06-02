@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.QuoteList.QuoteList_Scene">
+    android:id="@+id/myquote"
+    android:background="@color/White"
+    tools:context=".MainActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cityList"
+        android:layout_width="match_parent"
+        android:layout_height="620dp"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".view.QuoteList_Scene"
+        tools:listitem="@layout/quotelist_item"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/reco"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="55dp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="5sp"
+        android:autoSizeMaxTextSize="20sp"
+        android:padding="5dp"
+        android:text="@string/addBtn"
+        android:textColor="@color/darkGrey"
+        tools:ignore="UnusedAttribute" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
