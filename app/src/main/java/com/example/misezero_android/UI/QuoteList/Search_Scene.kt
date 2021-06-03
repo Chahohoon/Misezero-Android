@@ -2,6 +2,7 @@ package com.example.misezero_android.UI.QuoteList
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -10,12 +11,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.SearchView
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.misezero_android.MainActivity
 import com.example.misezero_android.R
@@ -80,6 +80,27 @@ class Search_Scene : AppCompatActivity() {
             }
 
         })
+
+        //////////////////////////////////////////////////////////////////
+        // 서치 아이콘
+        ///////////////////////////////////////////////////////////////////
+        val searchIcon = country_search.findViewById<ImageView>(R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.BLACK)
+
+        /////////////////////////////////////////////////////////////////////
+        // 취소
+        //////////////////////////////////////////////////////////////////////
+        val cancelIcon = country_search.findViewById<ImageView>(R.id.search_close_btn)
+        cancelIcon.setColorFilter(Color.BLACK)
+
+        // 텍스트 뷰
+        val textView = country_search.findViewById<TextView>(R.id.search_src_text)
+        textView.setTextColor(Color.BLACK)
+
+        // 리사이클 뷰
+        countryrv = findViewById(R.id.country_rv)
+        countryrv.layoutManager = LinearLayoutManager(countryrv.context)
+        countryrv.setHasFixedSize(true)
 
         //돌아가기 버튼 클릭 후 액티비티 종료
         back_Button.setOnClickListener {
@@ -224,7 +245,22 @@ class Search_Adapter(private var contryList : MutableList<SearchData>) : Recycle
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        holder.itemView.select_country_container.setBackgroundColor(Color.TRANSPARENT)
+
+        holder.itemView.select_country_text.setTextColor(Color.BLACK)
         holder.itemView.select_country_text.text = countryFilterList[position].place_name
+
+        holder.itemView.sub_country_text.setTextColor(Color.BLACK)
+        holder.itemView.sub_country_text.text = countryFilterList[position].address
+
+        holder.itemView.setOnClickListener {
+
+            val intent = Intent(mcontext, Search_Scene::class.java)
+            var selecteData = countryFilterList[position]
+            var data = "${selecteData.place_name}/${selecteData.x}/${selecteData.y}"
+            intent.putExtra("MiseMasg",data)
+            mcontext.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
