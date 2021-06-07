@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/myquote"
-    android:background="@color/White"
+    android:background="@color/mainBG"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -16,6 +16,7 @@
         android:layout_marginTop="40dp"
         android:padding="10dp"
         app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/addBtn"
         tools:context=".view.QuoteList_Scene"
         tools:listitem="@layout/quotelist_item"/>
 

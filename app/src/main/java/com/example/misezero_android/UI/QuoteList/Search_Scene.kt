@@ -1,3 +1,5 @@
+
+
 package com.example.misezero_android.UI.QuoteList
 
 import android.content.Context
@@ -31,6 +33,13 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 
+
+/**
+ *
+ * 2021-06-03 관심지역 추가 시 다이얼로그 안띄움
+ *
+ *
+ */
 data class SearchData(
     var place_name : String = "",
     var address : String = "",
@@ -43,7 +52,7 @@ class Search_Scene : AppCompatActivity() {
     lateinit var adapter: Search_Adapter
     lateinit var countryrv: RecyclerView
     var searchResData = mutableListOf<SearchData>()
-    var handler : DisplayHandler? =null
+    var handler : DisplayHandler? = null
     var realm : Realm? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,9 +62,30 @@ class Search_Scene : AppCompatActivity() {
         handler = DisplayHandler()
         onInitDataBase()
 
-        intent.getStringExtra("MiseMsg")?.let{
+        intent?.getStringExtra("MiseMsg")?.let{
             showDialog(it)
         }
+
+        //////////////////////////////////////////////////////////////////
+        // 서치 아이콘
+        ///////////////////////////////////////////////////////////////////
+        val searchIcon = country_search.findViewById<ImageView>(R.id.search_mag_icon)
+        searchIcon.setColorFilter(Color.BLACK)
+
+        /////////////////////////////////////////////////////////////////////
+        // 취소
+        //////////////////////////////////////////////////////////////////////
+        val cancelIcon = country_search.findViewById<ImageView>(R.id.search_close_btn)
+        cancelIcon.setColorFilter(Color.BLACK)
+
+        // 텍스트 뷰
+        val textView = country_search.findViewById<TextView>(R.id.search_src_text)
+        textView.setTextColor(Color.BLACK)
+
+        // 리사이클 뷰
+        countryrv = findViewById(R.id.country_rv)
+        countryrv.layoutManager = LinearLayoutManager(countryrv.context)
+        countryrv.setHasFixedSize(true)
 
         ///////////////////////////////////////////////////////////////////////////////
         /// 사용자 이벤트
@@ -80,28 +110,6 @@ class Search_Scene : AppCompatActivity() {
             }
 
         })
-
-        //////////////////////////////////////////////////////////////////
-        // 서치 아이콘
-        ///////////////////////////////////////////////////////////////////
-        val searchIcon = country_search.findViewById<ImageView>(R.id.search_mag_icon)
-        searchIcon.setColorFilter(Color.BLACK)
-
-        /////////////////////////////////////////////////////////////////////
-        // 취소
-        //////////////////////////////////////////////////////////////////////
-        val cancelIcon = country_search.findViewById<ImageView>(R.id.search_close_btn)
-        cancelIcon.setColorFilter(Color.BLACK)
-
-        // 텍스트 뷰
-        val textView = country_search.findViewById<TextView>(R.id.search_src_text)
-        textView.setTextColor(Color.BLACK)
-
-        // 리사이클 뷰
-        countryrv = findViewById(R.id.country_rv)
-        countryrv.layoutManager = LinearLayoutManager(countryrv.context)
-        countryrv.setHasFixedSize(true)
-
         //돌아가기 버튼 클릭 후 액티비티 종료
         back_Button.setOnClickListener {
             setResult(RESULT_OK)
@@ -228,17 +236,20 @@ class Search_Scene : AppCompatActivity() {
 /////////////////////////////////
 class Search_Adapter(private var contryList : MutableList<SearchData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),Filterable {
 
+    //아이템 리스트
     var countryFilterList = mutableListOf<SearchData>()
-    lateinit var mcontext : Context
 
-    class CountryHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
+    lateinit var mcontext: Context
 
-    init{
+    class CountryHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    init {
         countryFilterList = contryList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val countryListView = LayoutInflater.from(parent.context).inflate(R.layout.search_item,parent,false)
+        val countryListView =
+            LayoutInflater.from(parent.context).inflate(R.layout.search_item, parent, false)
         val sch = CountryHolder(countryListView)
         mcontext = parent.context
         return sch
@@ -258,7 +269,7 @@ class Search_Adapter(private var contryList : MutableList<SearchData>) : Recycle
             val intent = Intent(mcontext, Search_Scene::class.java)
             var selecteData = countryFilterList[position]
             var data = "${selecteData.place_name}/${selecteData.x}/${selecteData.y}"
-            intent.putExtra("MiseMasg",data)
+            intent.putExtra("MiseMasg", data)
             mcontext.startActivity(intent)
         }
     }
@@ -274,7 +285,7 @@ class Search_Adapter(private var contryList : MutableList<SearchData>) : Recycle
                 filterResults.values = countryFilterList
                 return filterResults
             }
-
+            @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 TODO("Not yet implemented")
             }

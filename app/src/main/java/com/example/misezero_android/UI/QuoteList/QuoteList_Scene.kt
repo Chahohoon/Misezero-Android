@@ -10,11 +10,12 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.misezero_android.MainActivity
-import com.example.misezero_android.MiseDataClass
-import com.example.misezero_android.R
+import com.example.misezero_android.*
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.fragment_quote_list__scene.*
+import kotlinx.android.synthetic.main.quotelist_item.view.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
  class QuoteList_Scene : Fragment() {
     var mainActivity: MainActivity? = null
@@ -42,20 +43,18 @@ import kotlinx.android.synthetic.main.fragment_quote_list__scene.*
         super.onActivityCreated(savedInstanceState)
         addBtn.setOnClickListener {
             val intent = Intent(activity,Search_Scene::class.java)
-            startActivityForResult(intent,mainActivity!!.REQUEST_CODE)
+            startActivityForResult(intent, mainActivity!!.REQUEST_CODE)
         }
     }
 
     override fun onPause() {
         super.onPause()
-
         this.isRunning = false
         this.handler = null
     }
 
     override fun onResume() {
         super.onResume()
-
         this.isRunning = true
         handler = DisplayHandler()
         var thread = ThreadClass()
@@ -94,7 +93,7 @@ import kotlinx.android.synthetic.main.fragment_quote_list__scene.*
         @RequiresApi(Build.VERSION_CODES.O)
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-//            onRefreshScreen()
+            onRefreshScreen()
 
         }
     }
@@ -116,6 +115,18 @@ class QuoteAdapter : RecyclerView.Adapter<QuoteAdapter.ViewHolder>(),itemTouchHe
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items.get(position)
+
+        holder.itemView.cityName.text = item.getInfo(InfoItem.이름)
+        holder.itemView.cityAddress.text = item.getInfo(InfoItem.행정동명)
+        holder.itemView.cityTemp.text = item.getWeatherRTInfo(WeatherItem.기온) + " ℃"
+        holder.itemView.cityHumid.text = item.getWeatherRTInfo(WeatherItem.습도) + " %"
+
+        var date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH"))
+
+        holder.itemView.weatherText.text = item.getWeatherSSTInfo(WeatherItem.기상상태,date,true)
+        holder.itemView.pm10Text.text = item.getAirpRTInfo(AirpItem.PM10_WHO,true)
+        holder.itemView.listWeatherImg.setImageResource(item.getWeatherGradeImgName(WeatherItem.기상상태, WeatherFrstType.초단기, date))
+        holder.itemView.listAirImg.setImageResource(item.getAirpGradeImgName(AirpItem.PM10_WHO))
 
         holder.itemView.setOnClickListener{
             itemClickListner.onClick(it, position)

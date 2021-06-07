@@ -20,7 +20,7 @@ class MiseCoreClass {
 
     fun onInitialize() {
         disPlayData = curInfoData
-//        getAirPolutionSatationInfo()
+        getAirPolutionSatationInfo()
     }
 
     ////////////////////////////////////////////////////

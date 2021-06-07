@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.*
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     var isRunning = false
     var handler : DisplayHandler? = null
 
-    // 관심지역 데이터 베이스
     var realm : Realm? = null
     var  REQUEST_CODE = 1
     // 권한 및 위치 설정
@@ -53,14 +53,14 @@ class MainActivity : AppCompatActivity() {
         setMainMenuSet()
         createSwipeEvent()
         locationInit()
-//        onInitDataBase()
+        onInitDataBase()
     }
 
     override fun onResume() {
         super.onResume()
         addLocationListener()
-
-//        backGroundLayout.visibility = View.VISIBLE
+        onProcessIntentMsg()
+        backGroundLayout.visibility = View.VISIBLE
         // 삭제
         this.isRunning = true
         handler = DisplayHandler()
@@ -69,7 +69,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //관심지역 데이터 저장할 용도
+    //////////////////////////////////////////////////////////////////////////////////////
+    // 인덴트 메시지 처리
+    //////////////////////////////////////////////////////////////////////////////////////
+    private fun onProcessIntentMsg(){
+        intent.getStringExtra("Next")?.let{
+            //onRefreshFragment(MyQuoteListFragment())
+            onRefreshFragment(QuoteList_Scene())
+        }
+    }
+
+    //관심지역 데이터 저장
     fun onInitDataBase() {
         Realm.init(this)
         var config = RealmConfiguration.Builder().name("myrealm.realm").build()
@@ -146,6 +156,7 @@ class MainActivity : AppCompatActivity() {
     //플로팅액션버튼 이벤트
     private fun setMainMenuSet() {
             fab1?.setOnClickListener {
+                 coreInfo.setDispInfo()
                 onRefreshFragment(Current_Scene())
                 fam.close(true)}
 
@@ -277,7 +288,7 @@ class MainActivity : AppCompatActivity() {
         @RequiresApi(Build.VERSION_CODES.O)
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-//            backGroundLayout.visibility = View.GONE
+            backGroundLayout.visibility = View.GONE
             isRunning = false
         }
     }

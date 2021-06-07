@@ -3,15 +3,18 @@ package com.example.misezero_android.UI.Weather
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import com.example.misezero_android.MainActivity
 import com.example.misezero_android.R
 import kotlinx.android.synthetic.main.fragment_current__scene.*
-
+/**
+ *
+ * 데이터연결작업 해야함
+ */
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
