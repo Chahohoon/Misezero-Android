@@ -1,22 +1,22 @@
 package com.example.misezero_android.UI.Map
 
 import android.os.Build
-import androidx.fragment.app.Fragment
-
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import com.example.misezero_android.AirpItem
 import com.example.misezero_android.MainActivity
 import com.example.misezero_android.R
 import com.github.doyaaaaaken.kotlincsv.dsl.csvReader
-import com.google.android.gms.maps.*
-
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
 import kotlinx.android.synthetic.main.fragment_map__scene.*
 
@@ -130,12 +130,13 @@ class Map_Scene : Fragment(), OnMapReadyCallback {
             var offsetItem = ClusterPosition(i[6].toDouble(), i[5].toDouble(), i[1].toString(), i[3].toString())
             mClusterManager!!.addItem(offsetItem)
         }
-        
-//        mClusterManager!!.setOnClusterClickListener {
-//
-//            Log.d("MiseLog", "clicked setOnClusterClickListener")
-//            true
-//        }
+
+        //클러스터 클릭하였을 때때
+        mClusterManager!!.setOnClusterClickListener {
+
+            Log.d("MiseLog", "clicked setOnClusterClickListener")
+            true
+        }
 
         /// 마커를 클릭하였을 때.
         mClusterManager!!.setOnClusterItemClickListener {

@@ -1,8 +1,7 @@
 package com.example.misezero_android.UI.Weather
 
 import android.content.Context
-import android.os.Build
-import android.os.Bundle
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,19 +14,13 @@ import kotlinx.android.synthetic.main.fragment_current__scene.*
  *
  * 데이터연결작업 해야함
  */
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Week_Scene.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class Week_Scene : Fragment() {
 
     private var mainActivity: MainActivity? = null
+    var isRunning = false
+    var handler : DisplayHandler? =null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,6 +47,32 @@ class Week_Scene : Fragment() {
         }
         weekBtn.setOnClickListener {
             mainActivity?.onRefreshFragment(Week_Scene())
+        }
+    }
+
+    private fun onRefreshScreen() {
+
+
+    }
+
+    inner class ThreadClass : Thread() {
+        override fun run() {
+            SystemClock.sleep(500)
+
+            mainActivity?.coreInfo?.disPlayData?.let {
+                if(it.isUpdate) {
+                    handler?.sendEmptyMessage(0)
+                    it.isUpdate = false
+                }
+            }
+        }
+    }
+
+    inner class DisplayHandler : Handler() {
+        @RequiresApi(Build.VERSION_CODES.O)
+        override fun handleMessage(msg: Message) {
+            super.handleMessage(msg)
+            onRefreshScreen()
         }
     }
 }

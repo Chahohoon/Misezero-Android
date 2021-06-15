@@ -256,6 +256,7 @@ class Search_Adapter(private var contryList : MutableList<SearchData>) : Recycle
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        //셀 별로 데이터 연결
         holder.itemView.select_country_container.setBackgroundColor(Color.TRANSPARENT)
 
         holder.itemView.select_country_text.setTextColor(Color.BLACK)
@@ -264,13 +265,16 @@ class Search_Adapter(private var contryList : MutableList<SearchData>) : Recycle
         holder.itemView.sub_country_text.setTextColor(Color.BLACK)
         holder.itemView.sub_country_text.text = countryFilterList[position].address
 
+
+        ////  리스트뷰 클릭
         holder.itemView.setOnClickListener {
 
             val intent = Intent(mcontext, Search_Scene::class.java)
             var selecteData = countryFilterList[position]
             var data = "${selecteData.place_name}/${selecteData.x}/${selecteData.y}"
-            intent.putExtra("MiseMasg", data)
+            intent.putExtra("MiseMsg", data)
             mcontext.startActivity(intent)
+            Log.d("미세테스트","데이터 전달 완료 : ${data}")
         }
     }
 
