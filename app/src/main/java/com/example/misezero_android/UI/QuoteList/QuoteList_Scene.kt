@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.misezero_android.*
+import com.example.misezero_android.UI.Weather.Current_Scene
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.fragment_quote_list__scene.*
 import kotlinx.android.synthetic.main.quotelist_item.view.*
@@ -41,10 +42,20 @@ import java.time.format.DateTimeFormatter
     //액티비티와 연결되는 시점
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         addBtn.setOnClickListener {
             val intent = Intent(activity,Search_Scene::class.java)
             startActivityForResult(intent, mainActivity!!.REQUEST_CODE)
         }
+
+        // 관심지역 리스트 클릭 이벤트
+        adapter.setItemClickListener(object : QuoteAdapter.ItemClickListener {
+            override fun onClick(view: View, position: Int) {
+                mainActivity?.coreInfo?.setDispInfo(position)
+                mainActivity?.onRefreshFragment(Current_Scene())
+            }
+
+        })
     }
 
     override fun onPause() {
